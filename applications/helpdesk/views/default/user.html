@@ -1,0 +1,96 @@
+{{extend 'layout.html'}}
+
+<div class="row"> 
+  <div id="web2py_user_form" class="col-lg-6" style="background-color:white; margin: 0 auto 5px auto; box-shadow: 0 0 5px #a1a1a1; border-radius:5px;padding: 20px">
+    <h2>
+      {{=T('Sign Up') if request.args(0) == 'register' else T('Log In') if request.args(0) == 'login' else T(request.args(0).replace('_',' ').title())}}
+    </h2>
+
+
+    {{if request.args(0)=='login' and not 'register' in auth.settings.actions_disabled:}}
+    <!-- <a href="{{=URL('user/register')}}">{{=T('Register')}}</a> -->
+    {{=form.custom.begin}} <!-- Aqui é a chamada para iniciar o formulário personalizado -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.email}}>{{=form.custom.label.email}}</label>  <div class="col-sm-9"> {{=form.custom.widget.email}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.password}}>{{=form.custom.label.password}}</label>  <div class="col-sm-9"> {{=form.custom.widget.password}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+  
+    <div class="float-right mt-3">{{=form.custom.submit}}</div>
+
+
+    {{=form.custom.end}}
+    <br/>
+    {{pass}}
+    {{if request.args(0)=='login' and not 'retrieve_password' in auth.settings.actions_disabled:}}
+    <a href="{{=URL('user/retrieve_password')}}">{{=T('Lost your password?')}}</a>
+    
+
+
+    {{pass}}
+    {{if request.args(0)=='register':}}
+    {{=form.custom.begin}} <!-- Aqui é a chamada para iniciar o formulário personalizado -->
+    <!-- Email -->
+   
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.first_name}}>{{=form.custom.label.first_name}}</label>  <div class="col-sm-9"> {{=form.custom.widget.first_name}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.last_name}}>{{=form.custom.label.last_name}}</label>  <div class="col-sm-9"> {{=form.custom.widget.last_name}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.email}}>{{=form.custom.label.email}}</label>  <div class="col-sm-9"> {{=form.custom.widget.email}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.telefone}}>{{=form.custom.label.telefone}}</label>  <div class="col-sm-9"> {{=form.custom.widget.telefone}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.empresa}}>{{=form.custom.label.empresa}}</label>  <div class="col-sm-9"> {{=form.custom.widget.empresa}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.password}}>{{=form.custom.label.password}}</label>  <div class="col-sm-9"> {{=form.custom.widget.password}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.password_two}}>{{=form.custom.label.password_two}}</label>  <div class="col-sm-9"> {{=form.custom.widget.password_two}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+
+    <div class="float-right mt-3">{{=form.custom.submit}}</div>
+
+
+{{=form.custom.end}}
+
+    {{pass}}
+
+
+    {{if request.args(0)=='profile':}}
+    {{=form.custom.begin}} <!-- Aqui é a chamada para iniciar o formulário personalizado -->
+    <!-- Email -->
+   
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.first_name}}>{{=form.custom.label.first_name}}</label>  <div class="col-sm-9"> {{=form.custom.widget.first_name}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.last_name}}>{{=form.custom.label.last_name}}</label>  <div class="col-sm-9"> {{=form.custom.widget.last_name}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.email}}>{{=form.custom.label.email}}</label>  <div class="col-sm-9"> {{=form.custom.widget.email}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.telefone}}>{{=form.custom.label.telefone}}</label>  <div class="col-sm-9"> {{=form.custom.widget.telefone}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.empresa}}>{{=form.custom.label.empresa}}</label>  <div class="col-sm-9"> {{=form.custom.widget.empresa}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    <a href="{{=URL('user/change_password')}}">{{=T('Change password')}}</a>
+    <div class="float-right mt-3">{{=form.custom.submit}}</div>
+
+
+{{=form.custom.end}}
+
+    {{pass}}
+    {{if request.args(0)=='change_password':}}
+    {{=form}}
+
+    {{pass}}
+
+
+
+
+    {{if request.args(0)=='retrieve_password':}}
+    {{=form.custom.begin}} <!-- Aqui é a chamada para iniciar o formulário personalizado -->
+    <!-- Email -->
+     <div class="row mt-3">  <label class="form-control-label col-sm-3" for={{=form.custom.label.email}}>{{=form.custom.label.email}}</label>  <div class="col-sm-9"> {{=form.custom.widget.email}} </div></div><!-- aqui eu insiro o campo customizado no html -->
+    
+    <div class="float-right mt-3">{{=form.custom.submit}}</div>
+
+
+{{=form.custom.end}}
+    {{pass}}
+  </div>
+</div>
+
+
+
+{{block page_js}}
+<script>
+    jQuery("#web2py_user_form input:visible:enabled:first").focus();
+{{if request.args(0)=='register':}}
+    web2py_validate_entropy(jQuery('#auth_user_password'),100);
+{{elif request.args(0)=='change_password':}}
+    web2py_validate_entropy(jQuery('#no_table_new_password'),100);
+{{pass}}
+</script>
+{{end page_js}}
