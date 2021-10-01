@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+# tente algo como
+def get_group():
+    groups = auth.user_groups
+    if not groups:
+        return None
+    group_ids = [id for id in groups if not groups[id].startswith('user_')]
+    return group_ids[0] if group_ids else None
+
+
+def index(): 
+    member = auth.user_groups
+    groups = auth.user_groups
+    member = [id for id in groups groups[id].startswith('user_')]
+    return dict(message = member)

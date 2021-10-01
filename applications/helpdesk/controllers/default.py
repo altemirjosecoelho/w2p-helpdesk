@@ -3,11 +3,19 @@
 # This is a sample controller
 # this file is released under public domain and you can use without limitations
 # -------------------------------------------------------------------------
-
 # ---- example index page ----
 def index():
     response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    if auth.user :
+        tipoUsuario = (auth.user_groups)
+
+        if "Administradores" in tipoUsuario.values():
+            redirect(URL('admin', 'index'))
+        if "Analistas" in tipoUsuario.values():
+            redirect(URL('analista', 'index'))
+        if "Clientes" in tipoUsuario.values():
+            redirect(URL('cliente', 'index'))
+    return dict()
 
 # ---- API (example) -----
 @auth.requires_login()

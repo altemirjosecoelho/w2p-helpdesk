@@ -96,6 +96,7 @@ auth.settings.extra_fields['auth_user'] = [
       Field('empresa')
 ]
 auth.define_tables(username=False, signature=False)
+auth.settings.everybody_group_id = 3
 
 # -------------------------------------------------------------------------
 # configure email
