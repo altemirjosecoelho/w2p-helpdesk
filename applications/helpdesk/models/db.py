@@ -139,9 +139,15 @@ if configuration.get('scheduler.enabled'):
 
 
 
-#db.define_table('permissoesDeUsuario', 
-#    Field('id_user', 'reference au', label='Marca'),
-#    Field('myfield', 'string'))
+db.define_table('stateTicket', 
+    Field('name', 'string', label='Estado do Ticket'),
+    Field('description', 'text',label='Descrição do Estado do Ticket')
+    )
+db.define_table('urgencyTicket', 
+    Field('name', 'string', label='Estado do Ticket'),
+    Field('description', 'text',label='Descrição do Estado do Ticket'),
+    Field('slaTime','time', label='Tempo de Espera Regulamentado (SLA)')
+    )
 
 
 

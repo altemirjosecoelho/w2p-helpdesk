@@ -58,3 +58,19 @@ ALTER TABLE "auth_user" ADD "telefone" CHAR(512);
 timestamp: 2021-09-29T19:57:52.677000
 ALTER TABLE "auth_user" ADD "empresa" CHAR(512);
 success!
+timestamp: 2021-10-01T22:19:36.964000
+CREATE TABLE "stateTicket"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "description" CHAR(512)
+);
+success!
+timestamp: 2021-10-01T22:27:46.923000
+CREATE TABLE "urgencyTicket"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "description" CHAR(512),
+    "slaTime" TIME
+);
+success!
+success!
