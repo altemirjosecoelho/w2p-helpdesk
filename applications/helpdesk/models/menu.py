@@ -22,7 +22,7 @@ if auth.user :
             (T('My Sites'), False, URL('default', 'site')),
 
             (T('Tickets'), False, '#', [
-                (T('Em andamento'), False, URL('admin', 'ticketActive',)),
+                (T('Em andamento'), False, URL('admin', 'index',)),
                 (T('Novo'), False,URL('admin', 'ticketNew',)),
                 (T('Definir Analista'), False,URL('admin', 'ticketForAnalist')),
                 (T('Finalizados'), False,URL('admin', 'ticketHistoric')),
@@ -36,8 +36,10 @@ if auth.user :
             (T('Cadastro'), False, '#', [
                 (T('Usuarios'), False, URL('admin', 'user',)),
                 (T('Permissões'), False,URL('admin', 'permission',)),
-                (T('Estados possiveis do Ticket'), False,URL('admin', 'ticketsState')),
-                (T('Niveis de Urgencia do Ticket'), False,URL('admin', 'urgenceTicket')),
+                (T('Area de Ticket'), False,URL('admin', 'areaTicket')),
+                (T('Tipo de Ticket'), False,URL('admin', 'typeTicket')),
+                (T('Estado de  Ticket'), False,URL('admin', 'ticketsState')),
+                (T('Niveis de Urgencia de Ticket'), False,URL('admin', 'urgencyTicket')),
                 ]),
             ]
 

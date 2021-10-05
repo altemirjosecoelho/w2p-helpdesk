@@ -136,21 +136,54 @@ if configuration.get('scheduler.enabled'):
     from gluon.scheduler import Scheduler
     scheduler = Scheduler(db, heartbeat=configuration.get('scheduler.heartbeat'))
 
-
+db.define_table('typeTicket', 
+    Field('name', 'string', label='Tipo do Ticket'),
+    Field('description', 'text',label='Descrição do Tipo do Ticket'),
+    format = '%(name)s'
+    )
+db.define_table('areaTicket', 
+    Field('name', 'string', label='Area do Ticket'),
+    Field('description', 'text',label='Descrição da Area do Ticket'),
+    format = '%(name)s'
+    )
 
 
 db.define_table('stateTicket', 
     Field('name', 'string', label='Estado do Ticket'),
-    Field('description', 'text',label='Descrição do Estado do Ticket')
+    Field('description', 'text',label='Descrição do Estado do Ticket'),
+    format = '%(name)s'
     )
 db.define_table('urgencyTicket', 
-    Field('name', 'string', label='Estado do Ticket'),
-    Field('description', 'text',label='Descrição do Estado do Ticket'),
-    Field('slaTime','time', label='Tempo de Espera Regulamentado (SLA)')
+    Field('name', 'string', label='Urgencia do Ticket'),
+    Field('description', 'text',label='Descrição da Urgencia do Ticket'),
+    Field('slaTime','integer', label='Tempo de Espera Regulamentado (SLA)'),
+    format = '%(id)s | %(name)s | %(slaTime)s h   '
+    )
+#analist = db(db.auth_membership.group_id == 2).select(db.auth_membership.user_id)
+db.define_table('ticket',
+    Field('usuario', 'reference auth_user'),
+    Field('analista','reference auth_user'),  
+    Field('description', 'text', label='Descrição'),
+    Field('Tipo','reference typeTicket'),
+    Field('Area','reference areaTicket'),
+    Field('Urgencia','reference urgencyTicket'),
+    Field('Estado','reference stateTicket'),
+
     )
 
+query = db((db.auth_membership.group_id == auth.id_group('Analistas')) &
+           (db.auth_membership.user_id == db.auth_user.id))
+db.ticket.analista.requires = IS_IN_DB(query, db.auth_user.id, '%(first_name)s %(last_name)s')
+
+query = db((db.auth_membership.group_id == auth.id_group('Clientes')) &
+           (db.auth_membership.user_id == db.auth_user.id))
+db.ticket.usuario.requires = IS_IN_DB(query, db.auth_user.id, '%(first_name)s %(last_name)s')
 
 
+db.ticket.Urgencia.requires= IS_IN_DB(db, 'urgencyTicket.id', db.urgencyTicket._format, sort=True )
+
+
+    
 # -------------------------------------------------------------------------
 # Define your tables below (or better in another model file) for example
 #

@@ -74,3 +74,40 @@ CREATE TABLE "urgencyTicket"(
 );
 success!
 success!
+success!
+success!
+timestamp: 2021-10-04T14:07:01.220000
+CREATE TABLE "typeTicket"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2021-10-04T14:07:01.237000
+CREATE TABLE "areaTicket"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2021-10-04T14:52:45.505000
+CREATE TABLE "ticket"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "usuario" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ,
+    "description" TEXT
+);
+success!
+timestamp: 2021-10-04T15:22:14.773000
+ALTER TABLE "ticket" ADD "analista" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE  ;
+success!
+success!
+success!
+timestamp: 2021-10-04T19:09:41.198000
+ALTER TABLE "ticket" ADD "Tipo" INTEGER REFERENCES "typeTicket" ("id") ON DELETE CASCADE  ;
+timestamp: 2021-10-04T19:09:41.219000
+ALTER TABLE "ticket" ADD "Area" INTEGER REFERENCES "areaTicket" ("id") ON DELETE CASCADE  ;
+timestamp: 2021-10-04T19:09:41.226000
+ALTER TABLE "ticket" ADD "Urgencia" INTEGER REFERENCES "urgencyTicket" ("id") ON DELETE CASCADE  ;
+timestamp: 2021-10-04T19:09:41.241000
+ALTER TABLE "ticket" ADD "Estado" INTEGER REFERENCES "stateTicket" ("id") ON DELETE CASCADE  ;
+success!
