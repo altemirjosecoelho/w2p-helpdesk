@@ -52,3 +52,13 @@
 [2021-09-30 17:58:26] EDIT helpdesk/controllers/admin.py: 0
 [2021-09-30 17:58:35] EDIT helpdesk/controllers/admin.py: 0
 [2021-10-01 21:13:05] CREATE admin/user.html: 0
+[2021-10-05 19:48:56] EDIT helpdesk/views/layout.html: 0
+[2021-10-05 19:49:15] EDIT helpdesk/views/layout.html: 0
+[2021-10-05 19:54:32] EDIT helpdesk/views/layout.html: 0
+[2021-10-05 20:46:56] CREATE cliente/index.html: 0
+[2021-10-05 20:49:39] EDIT helpdesk/controllers/cliente.py: 2
+[2021-10-05 20:52:27] EDIT helpdesk/controllers/cliente.py: 0
+[2021-10-05 20:53:15] EDIT helpdesk/controllers/cliente.py: 0
+[2021-10-05 20:53:36] EDIT helpdesk/controllers/cliente.py: 0
+[2021-10-05 23:30:19] CREATE cliente/ticketNew.html: 0
+[2021-10-05 23:30:59] EDIT helpdesk/views/cliente/ticketNew.html: 0

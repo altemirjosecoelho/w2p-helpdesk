@@ -5,9 +5,6 @@
 # this is the main application menu add/remove items as required
 # ----------------------------------------------------------------------------------------------------------------------
 
-response.menu = [
-    (T('Home'), False, URL('default', 'index'), [])
-]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # provide shortcuts for development. you can remove everything below in production
@@ -18,10 +15,8 @@ if auth.user :
 
     if "Administradores" in tipoUsuario.values():
             _app = request.application
-            response.menu += [
-            (T('My Sites'), False, URL('default', 'site')),
-
-            (T('Tickets'), False, '#', [
+            response.menu = [
+                (T('Tickets'), False, '#', [
                 (T('Em andamento'), False, URL('admin', 'index',)),
                 (T('Novo'), False,URL('admin', 'ticketNew',)),
                 (T('Definir Analista'), False,URL('admin', 'ticketForAnalist')),
@@ -42,4 +37,12 @@ if auth.user :
                 (T('Niveis de Urgencia de Ticket'), False,URL('admin', 'urgencyTicket')),
                 ]),
             ]
-
+    if "Clientes" in tipoUsuario.values():
+            response.menu = [
+                (T('Tickets'), False, '#', [
+                (T('Novo'), False,URL('cliente', 'ticketNew',)),
+                (T('Em andamento'), False, URL('cliente', 'index',)),
+                
+                (T('Finalizados'), False,URL('cliente', 'ticketHistoric')),
+                ]),
+            ]

@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+# tente algo como
+
+
+@auth.requires_membership('Clientes') 
+def index(): 
+    
+    query = (db.ticket.usuario == 1)
+    grid = SQLFORM.grid(db.query)
+    message = T("Você esta logado com uma conta de Cliente do Sistema")
+
+    return dict(message = message,grid = grid )

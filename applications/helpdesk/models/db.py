@@ -96,6 +96,7 @@ auth.settings.extra_fields['auth_user'] = [
       Field('empresa')
 ]
 auth.define_tables(username=False, signature=False)
+auth.settings.create_user_groups = None
 auth.settings.everybody_group_id = 3
 
 # -------------------------------------------------------------------------
@@ -161,7 +162,7 @@ db.define_table('urgencyTicket',
     )
 #analist = db(db.auth_membership.group_id == 2).select(db.auth_membership.user_id)
 db.define_table('ticket',
-    Field('usuario', 'reference auth_user'),
+    Field('usuario', 'reference auth_user', default=auth.user_id),
     Field('analista','reference auth_user'),  
     Field('description', 'text', label='Descrição'),
     Field('Tipo','reference typeTicket'),

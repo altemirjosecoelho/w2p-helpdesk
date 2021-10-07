@@ -5,7 +5,7 @@
 # -------------------------------------------------------------------------
 # ---- example index page ----
 def index():
-    response.flash = T("Hello World")
+    #response.flash = T("Hello World")
     if auth.user :
         tipoUsuario = (auth.user_groups)
 
